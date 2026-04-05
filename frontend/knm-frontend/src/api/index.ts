@@ -14,15 +14,14 @@ const apiGet = (url: string) => {
     console.log(response.data)
   }).catch((error) => {
     console.error(error)
-  }
+  })
 }
-
 const apiPost = (url: string, data: any) => {
   api.post(url, data).then((response) => {
     console.log(response.data)
   }).catch((error) => {
     console.error(error)
-  }
+  })
 }
 
-export default api
+export default { api, apiGet, apiPost }
