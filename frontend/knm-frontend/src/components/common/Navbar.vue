@@ -22,7 +22,6 @@ import { computed } from 'vue'
 const router = useRouter()
 const route = useRoute()
 
-// 路由筛选，只显示showInNav为true的路由
 const navRoutes = computed(() => {
   return router.options.routes.filter(route => 
     route.meta && route.meta.showInNav === true
