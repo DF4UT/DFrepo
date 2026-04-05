@@ -8,4 +8,21 @@ const api = axios.create({
     },
   baseURL: '/api',
 })
+
+const apiGet = (url: string) => {
+  api.get(url).then((response) => {
+    console.log(response.data)
+  }).catch((error) => {
+    console.error(error)
+  }
+}
+
+const apiPost = (url: string, data: any) => {
+  api.post(url, data).then((response) => {
+    console.log(response.data)
+  }).catch((error) => {
+    console.error(error)
+  }
+}
+
 export default api

@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 import sys
 import os
@@ -44,3 +44,15 @@ def debug():
         "test2表结构": test2_structure,
         "test2表数据": test2_data
     }
+
+@app.post("/post")
+async def post(request: Request):
+    payload = await request.json()
+    name = payload.get("name")
+    name = name.replace("\\", "\\\\")
+    print(name)
+    if not name:
+        return {"message": "Missing name"}
+    exe(f"INSERT INTO test2 (name) VALUES ('{name}')")
+    return {"message": "Post success"}
+
